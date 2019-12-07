@@ -25,7 +25,7 @@ SECRET_KEY = 'rv)#%q5!85f%c8xggf6g%-rk^u76af9(qq_s4ixxg2$@c2!(28'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'chat',
     'channels'
 ]
 
@@ -69,7 +70,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'asyncdjango.wsgi.application'
+ASGI_APPLICATION = 'asyncdjango.asgi.application'
 
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

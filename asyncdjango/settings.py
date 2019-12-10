@@ -72,6 +72,15 @@ TEMPLATES = [
 WSGI_APPLICATION = 'asyncdjango.wsgi.application'
 ASGI_APPLICATION = 'asyncdjango.routing.application'
 
+# Channels
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('redis', 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

@@ -25,18 +25,20 @@ SECRET_KEY = '5=!*j3re%za77&rqa^go=r-ev$lwqeh)2m(9+bo9-rkot$1)&)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'chat'
 ]
 
 MIDDLEWARE = [
@@ -68,6 +70,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'asyncdjango.wsgi.application'
+ASGI_APPLICATION = 'asyncdjango.routing.application'
 
 
 # Database

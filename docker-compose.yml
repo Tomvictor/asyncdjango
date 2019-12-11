@@ -2,14 +2,15 @@ version: '3'
 
 services:
   db:
-    container_name: postgres_async_container
+    container_name: postgres_db
     image: postgres
   redis:
+    container_name: redis_db
     image: redis
     ports:
       - "6379:6379"
   web:
-    container_name: asyncdjango-container
+    container_name: asyncdjango
     build:
       context: .
       dockerfile: ./Dockerfile

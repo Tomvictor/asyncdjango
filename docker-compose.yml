@@ -4,21 +4,24 @@ services:
   db:
     container_name: postgres_db
     image: postgres
+    restart: always
   redis:
     container_name: redis_db
     image: redis
+    restart: always
     ports:
       - "6379:6379"
   web:
     container_name: asyncdjango
+    restart: always
     build:
       context: .
       dockerfile: ./Dockerfile
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8888
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - "8888:8888"
     depends_on:
       - db
       - redis
